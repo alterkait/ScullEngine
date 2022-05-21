@@ -16,18 +16,20 @@ public class MainGameLoop {
 		Renderer renderer = new Renderer();
 		
 		float[] vertices = {
-				//Bottom Triangle
-				-0.5f, -0.5f, 0f,
-				0.5f, -0.5f, 0f,
-				0.5f, 0.5f, 0f,
+				-0.5f,-0.5f,0f,		//vertex 1
+				0.5f, -0.5f, 0f,	//vertex 2
+				0.5f, 0.5f, 0f,		//vertex 3
+				-0.5f, 0.5f, 0f		//vertex 4
 				
-				//Top triangle
-				-0.5f, -0.5f, 0f,
-				0.5f, 0.5f, 0f,
-				-0.5f, 0.5f, 0f
 		};
 		
-		RawModel model = loader.loadToVAO(vertices);
+		int[] indices = {
+				0,1,2,
+				0,2,3
+				
+		};
+		
+		RawModel model = loader.loadToVAO(vertices, indices);
 		
 		while(!Display.isCloseRequested()) {
 			renderer.prepare();
