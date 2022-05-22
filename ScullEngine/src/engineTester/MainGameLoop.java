@@ -40,7 +40,7 @@ public class MainGameLoop {
 				1,0
 		};
 		
-		RawModel model = loader.loadToVAO(vertices, indices);
+		RawModel model = loader.loadToVAO(vertices, textureCoords, indices);
 		ModelTexture texture = new ModelTexture(loader.loadTexture("bee"));
 		TexturedModel texturedModel = new TexturedModel(model,texture);
 		
