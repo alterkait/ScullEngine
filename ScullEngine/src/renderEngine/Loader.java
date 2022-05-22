@@ -24,6 +24,7 @@ public class Loader {
 	
 	private List<Integer> vaos = new ArrayList<Integer>();
 	private List<Integer> vbos = new ArrayList<Integer>();
+	private List<Integer> textures = new ArrayList<>();
 	
 	public RawModel loadToVAO(float[] positions, int[] indices) {
 		int vaoID = createVAO();
@@ -47,6 +48,7 @@ public class Loader {
 		}
 		
 		int textureID = texture.getTextureID();
+		textures.add(textureID);
 		return textureID;
 	}
 	
@@ -54,9 +56,15 @@ public class Loader {
 		for(int vao:vaos) {
 			GL30.glDeleteVertexArrays(vao);
 		}
+		
 		for(int vbo:vbos) {
 			GL15.glDeleteBuffers(vbo);
 		}
+		
+		for(int texture:textures) {
+			GL11.glDeleteTextures(texture);
+		}
+		
 	}
 	
 	private int createVAO() {
