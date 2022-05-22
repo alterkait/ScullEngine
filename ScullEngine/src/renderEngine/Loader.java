@@ -16,6 +16,8 @@ import org.lwjgl.opengl.GL30;
 import org.newdawn.slick.opengl.Texture;
 import org.newdawn.slick.opengl.TextureLoader;
 
+import models.RawModel;
+
 /*
  * Loading 3D models into memory by storing positional data 
  * about the model in a VAO
