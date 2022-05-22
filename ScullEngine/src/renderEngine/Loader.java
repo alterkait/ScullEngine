@@ -45,6 +45,9 @@ public class Loader {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+		
+		int textureID = texture.getTextureID();
+		return textureID;
 	}
 	
 	public void cleanUp() {
