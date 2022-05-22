@@ -33,6 +33,13 @@ public class MainGameLoop {
 				
 		};
 		
+		float[] textureCoords = {
+				0,0,
+				0,1,
+				1,1,
+				1,0
+		};
+		
 		RawModel model = loader.loadToVAO(vertices, indices);
 		ModelTexture texture = new ModelTexture(loader.loadTexture("bee"));
 		TexturedModel texturedModel = new TexturedModel(model,texture);
@@ -41,7 +48,7 @@ public class MainGameLoop {
 			renderer.prepare();
 			shader.start();
 			
-			renderer.render(model);
+			renderer.render(texturedModel);
 			shader.stop();
 			DisplayManager.updateDisplay();
 		}
