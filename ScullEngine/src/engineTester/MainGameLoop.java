@@ -3,10 +3,12 @@ package engineTester;
 import org.lwjgl.opengl.Display;
 
 import models.RawModel;
+import models.TexturedModel;
 import renderEngine.DisplayManager;
 import renderEngine.Loader;
 import renderEngine.Renderer;
 import shaders.StaticShader;
+import textures.ModelTexture;
 
 public class MainGameLoop {
 	
@@ -32,6 +34,8 @@ public class MainGameLoop {
 		};
 		
 		RawModel model = loader.loadToVAO(vertices, indices);
+		ModelTexture texture = new ModelTexture(loader.loadTexture("bee"));
+		TexturedModel texturedModel = new TexturedModel(model,texture);
 		
 		while(!Display.isCloseRequested()) {
 			renderer.prepare();
