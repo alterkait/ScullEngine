@@ -2,8 +2,8 @@ package shaders;
 
 public class StaticShader extends ShaderProgram{
 	
-	private static final String VERTEX_FILE = "/ScullEngine/src/shaders/vertexShader.txt";
-	private static final String FRAGMENT_FILE = "/ScullEngine/src/shaders/fragmentShader.txt";
+	private static final String VERTEX_FILE = "C:\\Users\\alter\\git\\repository2\\ScullEngine\\src\\shaders\\vertexShader.txt";
+	private static final String FRAGMENT_FILE = "C:\\Users\\alter\\git\\repository2\\ScullEngine\\src\\shaders\\fragmentShader.txt";
 
 	public StaticShader() {
 		super(VERTEX_FILE, FRAGMENT_FILE);
