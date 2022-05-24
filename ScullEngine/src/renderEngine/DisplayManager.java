@@ -10,7 +10,7 @@ import org.lwjgl.opengl.PixelFormat;
 public class DisplayManager {
 	
 	public static final int WIDTH = 1280;
-	public static final int HEIGHT = 720;
+	public static final int HEIGHT = 760;
 	
 	public static final int FPS_TARGET = 60;
 	
