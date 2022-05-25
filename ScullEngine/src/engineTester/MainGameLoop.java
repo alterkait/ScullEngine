@@ -42,7 +42,7 @@ public class MainGameLoop {
 		Camera camera = new Camera();
 		
 		while(!Display.isCloseRequested()) {
-			entity.increaseRotation(0, 1, 0);
+			entity.increaseRotation(0, 0, 0);
 			
 			camera.move();
 			
