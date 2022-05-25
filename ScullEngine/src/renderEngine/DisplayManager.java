@@ -14,7 +14,7 @@ public class DisplayManager {
 	
 	public static final int FPS_TARGET = 60;
 	
-	final static String scullEngineVersion = "v1.0.0";
+	final static String SCULL_ENGINE_VERSION = "v1.0.0";
 	
 	public static void createDisplay() {
 		
@@ -25,7 +25,7 @@ public class DisplayManager {
 			Display.setDisplayMode(new DisplayMode(WIDTH, HEIGHT));
 			Display.create(new PixelFormat(), attribs);
 			
-			Display.setTitle("Scull Engine " + scullEngineVersion);
+			Display.setTitle("Scull Engine " + SCULL_ENGINE_VERSION);
 		} catch (LWJGLException e) {
 			e.printStackTrace();
 		}
