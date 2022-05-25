@@ -25,7 +25,7 @@ public class MainGameLoop {
 		
 		Renderer renderer = new Renderer(shader);
 		
-		RawModel model = OBJLoader.loadObjModel("stall", loader); 
+		RawModel model = OBJLoader.loadObjModel("dragon", loader); 
 		
 		TexturedModel staticModel = new TexturedModel(model,
 				new ModelTexture(loader.loadTexture("stallTexture")));
