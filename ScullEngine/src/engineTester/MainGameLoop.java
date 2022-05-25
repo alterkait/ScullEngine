@@ -25,8 +25,6 @@ public class MainGameLoop {
 		
 		Renderer renderer = new Renderer(shader);
 		
-		
-		
 		RawModel model = OBJLoader.loadObjModel("stall", loader); 
 		
 		TexturedModel staticModel = new TexturedModel(model,
