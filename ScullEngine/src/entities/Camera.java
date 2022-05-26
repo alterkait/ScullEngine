@@ -17,27 +17,27 @@ public class Camera {
 	
 	public void move() {
 		if(Keyboard.isKeyDown(Keyboard.KEY_W)) {
-			position.z -= 0.15f;
+			position.z -= 1.5f;
 		}
 		
 		if(Keyboard.isKeyDown(Keyboard.KEY_S)) {
-			position.z += 0.15f;
+			position.z += 1.5f;
 		}
 		
 		if(Keyboard.isKeyDown(Keyboard.KEY_A)) {
-			position.x -= 0.15f;
+			position.x -= 1.5f;
 		}
 		
 		if(Keyboard.isKeyDown(Keyboard.KEY_D)) {
-			position.x += 0.15f;
+			position.x += 1.55f;
 		}
 		
 		if(Keyboard.isKeyDown(Keyboard.KEY_LSHIFT) |Keyboard.isKeyDown(Keyboard.KEY_RSHIFT)) {
-			position.y += 0.15f;
+			position.y += 1.55f;
 		}
 		
 		if(Keyboard.isKeyDown(Keyboard.KEY_LCONTROL)) {
-			position.y -= 0.15f;
+			position.y -= 1.55f;
 		}
 	}
 
