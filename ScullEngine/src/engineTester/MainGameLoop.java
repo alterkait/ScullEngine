@@ -26,7 +26,7 @@ public class MainGameLoop {
 		RawModel model = OBJLoader.loadObjModel("dragon", loader); 
 		
 		TexturedModel staticModel = new TexturedModel(model,
-				new ModelTexture(loader.loadTexture("stallTexture")));
+				new ModelTexture(loader.loadTexture("bee")));
 		
 		ModelTexture texture = staticModel.getTexture();
 		texture.setShineDamper(10);
