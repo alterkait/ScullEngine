@@ -23,16 +23,20 @@ public class MainGameLoop {
 		Loader loader = new Loader();
 		
 		
-		RawModel model = OBJLoader.loadObjModel("dragon", loader); 
+		RawModel model = OBJLoader.loadObjModel("lowPolyTree", loader); 
+		RawModel drone = OBJLoader.loadObjModel("drone", loader);
 		
-		TexturedModel staticModel = new TexturedModel(model,
-				new ModelTexture(loader.loadTexture("bee")));
+		TexturedModel staticModel = new TexturedModel(model, new ModelTexture(loader.loadTexture("lowPolyTree")));
+		TexturedModel droneModel = new TexturedModel(drone, new ModelTexture(loader.loadTexture("white")));
 		
 		ModelTexture texture = staticModel.getTexture();
-		texture.setShineDamper(10);
-		texture.setReflectivity(1);
+		ModelTexture droneTexture = droneModel.getTexture();
+		texture.setShineDamper(10); droneTexture.setShineDamper(10); 
+		texture.setReflectivity(1); droneTexture.setReflectivity(1);
 		
 		Entity entity = new Entity(staticModel, new Vector3f(0,0,-20),0,0,0,1);
+		Entity droneEntity = new Entity(droneModel, new Vector3f(0,0,10), 0,0,0,1);
+		
 		
 		Light light = new Light(new Vector3f(0,1000,-10), new Vector3f(1,1,1));
 		
@@ -51,6 +55,7 @@ public class MainGameLoop {
 			renderer.processTerrain(terrain);
 			renderer.processTerrain(terrain2);
 			renderer.processEntity(entity);
+			renderer.processEntity(droneEntity);
 			
 			renderer.render(light, camera);
 			DisplayManager.updateDisplay();
