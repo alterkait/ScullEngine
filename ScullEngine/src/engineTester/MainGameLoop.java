@@ -1,5 +1,9 @@
 package engineTester;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Random;
+
 import org.lwjgl.opengl.Display;
 import org.lwjgl.util.vector.Vector3f;
 
@@ -22,41 +26,32 @@ public class MainGameLoop {
 		
 		Loader loader = new Loader();
 		
+		RawModel model = OBJLoader.loadObjModel("tree", loader);
+		TexturedModel staticModel = new TexturedModel(model, new ModelTexture(loader.loadTexture("tree")));
 		
-		RawModel model = OBJLoader.loadObjModel("lowPolyTree", loader); 
-		RawModel drone = OBJLoader.loadObjModel("drone", loader);
+		List<Entity> entities = new ArrayList<>();
+		Random random = new Random();
+		for(int i=0; i<5000; i++) {
+			entities.add(new Entity(staticModel, new Vector3f(random.nextFloat()*800 - 400, 0,random.nextFloat() * -600), 0,0,0,3));
+			
+		}
 		
-		TexturedModel staticModel = new TexturedModel(model, new ModelTexture(loader.loadTexture("lowPolyTree")));
-		TexturedModel droneModel = new TexturedModel(drone, new ModelTexture(loader.loadTexture("white")));
+		Light light = new Light(new Vector3f(20000,20000,2000),new Vector3f(1,1,1));
 		
-		ModelTexture texture = staticModel.getTexture();
-		ModelTexture droneTexture = droneModel.getTexture();
-		texture.setShineDamper(10); droneTexture.setShineDamper(10); 
-		texture.setReflectivity(1); droneTexture.setReflectivity(1);
+		Terrain terrain = new Terrain(0,0,loader,new ModelTexture(loader.loadTexture("grass")));
+		Terrain terrain2 = new Terrain(1,0,loader,new ModelTexture(loader.loadTexture("grass")));
 		
-		Entity entity = new Entity(staticModel, new Vector3f(0,0,-20),0,0,0,1);
-		Entity droneEntity = new Entity(droneModel, new Vector3f(0,0,10), 0,0,0,1);
-		
-		
-		Light light = new Light(new Vector3f(0,1000,-10), new Vector3f(1,1,1));
-		
-		Terrain terrain = new Terrain(0,-1,loader, new ModelTexture(loader.loadTexture("grass")));
-		Terrain terrain2 = new Terrain(-1,-1,loader, new ModelTexture(loader.loadTexture("grass")));
-		
-		Camera camera = new Camera();
-		
+		Camera camera = new Camera();	
 		MasterRenderer renderer = new MasterRenderer();
 		
-		while(!Display.isCloseRequested()) {
-			entity.increaseRotation(0, 1, 0);
-			
+		while(!Display.isCloseRequested()){
 			camera.move();
 			
 			renderer.processTerrain(terrain);
 			renderer.processTerrain(terrain2);
-			renderer.processEntity(entity);
-			renderer.processEntity(droneEntity);
-			
+			for(Entity entity:entities){
+				renderer.processEntity(entity);
+			}
 			renderer.render(light, camera);
 			DisplayManager.updateDisplay();
 		}
